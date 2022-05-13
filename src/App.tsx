@@ -1,11 +1,12 @@
-import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { PropertyList } from "./components/PropertyList/PropertyList";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <PropertyList />
+    </div>
+  );
 }
 
 export default App;
