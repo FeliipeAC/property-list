@@ -4,6 +4,8 @@ import { Star, AttachMoney } from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
 
 export class PropertyCard extends Component<any> {
+  euroValue = 7.55;
+
   render(): ReactNode {
     return (
       <div className="card" key={this.props.item.id}>
@@ -47,9 +49,22 @@ export class PropertyCard extends Component<any> {
             }}
           >
             <div className="lowest-price-per-night">
-              <AttachMoney color="primary"></AttachMoney>
-              <span>
-                {this.props.item.lowestPricePerNight.value} (per night)
+              <div>
+                <AttachMoney color="primary"></AttachMoney>
+                <span>
+                  {(
+                    this.props.item.lowestPricePerNight.value / this.euroValue
+                  ).toFixed(2)}{" "}
+                </span>
+              </div>
+
+              <span
+                style={{
+                  fontSize: "11px",
+                  color: "#58667e",
+                }}
+              >
+                (lowest price per night)
               </span>
             </div>
           </div>
