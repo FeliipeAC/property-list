@@ -23,14 +23,13 @@ export class PropertyList extends Component<any, { list: any[] }> {
     return (
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        spacing={{ xs: 3, md: 6 }}
         justifyContent="flex-start"
         alignItems="stretch"
       >
         {this.state.list.map((item) => {
           return (
-            <Grid item xs={2} sm={4} md={4} key={item.id}>
+            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={item.id}>
               <PropertyCard item={item} />
             </Grid>
           );

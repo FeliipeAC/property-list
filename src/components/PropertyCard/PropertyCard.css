@@ -1,0 +1,81 @@
+.card {
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 23px 23px 51px #adadad, -23px -23px 51px #ffffff;
+  padding: 0 16px 32px 16px;
+  overflow: hidden;
+  height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 6px 0;
+  text-align: left;
+  color: #002126;
+}
+
+.image-container {
+  height: 200px;
+  margin: 0 -16px 46px -16px;
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.title-container {
+  margin-bottom: 24px;
+  text-align: left;
+  /* min-height: 90px; */
+}
+
+.title-container span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #58667e;
+}
+
+p {
+  text-align: left;
+  margin: 0 0 18px 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  bottom: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #002126;
+  /* box-shadow: 13px 13px 17px #ffffff, -13px -13px 17px #ffffff; */
+  box-shadow: 0px 4px 16px rgba(17, 17, 26, 0.1),
+    0px 8px 32px rgba(17, 17, 26, 0.05);
+  color: #ffffff;
+}
+
+.rating span {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.lowest-price-per-night {
+  display: flex;
+  align-items: center;
+}
+
+.lowest-price-per-night span {
+  font-weight: 500;
+  margin-left: 4px;
+  font-size: 18px;
+}
