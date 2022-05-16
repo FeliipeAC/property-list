@@ -29,6 +29,7 @@ img {
   object-fit: cover;
   border-bottom-left-radius: 7%;
   border-bottom-right-radius: 60%;
+  box-shadow: 10px 10px 25px #e0e0e0, -10px -10px 25px #ffffff;
 }
 
 .title-container {
