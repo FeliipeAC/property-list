@@ -1,6 +1,6 @@
 import { Component, ReactNode } from "react";
 import "./PropertyCard.css";
-import { Star, AttachMoney } from "@mui/icons-material";
+import { Star, AttachMoney, EuroSymbol } from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
 
 export class PropertyCard extends Component<any> {
@@ -50,7 +50,7 @@ export class PropertyCard extends Component<any> {
           >
             <div className="lowest-price-per-night">
               <div>
-                <AttachMoney color="primary"></AttachMoney>
+                <EuroSymbol color="primary"></EuroSymbol>
                 <span>
                   {(
                     this.props.item.lowestPricePerNight.value / this.euroValue
