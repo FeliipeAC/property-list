@@ -71,11 +71,6 @@ p {
   font-size: 18px;
 }
 
-.lowest-price-per-night {
-  /* display: flex;
-  align-items: center; */
-}
-
 .lowest-price-per-night > div {
   display: flex;
   align-items: center;
