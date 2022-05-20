@@ -1,17 +1,10 @@
 import { Component, ReactNode } from "react";
 
-import Paper from "@mui/material/Paper";
-import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Grid";
-
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Box from "@mui/material/Box";
@@ -75,7 +68,7 @@ export class FilterBar extends Component<
 		};
 	}
 > {
-	listOrderOptions = [
+	listSortOptions = [
 		{
 			key: "price",
 			name: "Lowest price per night",
@@ -157,7 +150,7 @@ export class FilterBar extends Component<
 									anchorEl={this.state.anchorEl}
 									onClose={this.handleClose}
 								>
-									{this.listOrderOptions.map(
+									{this.listSortOptions.map(
 										(option, index) => (
 											<MenuItem
 												key={option.key}

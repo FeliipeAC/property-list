@@ -19,7 +19,6 @@ export class PropertyList extends Component<
 	componentDidMount() {
 		// Simple GET request using axios
 		axios.get("data.json").then((response: any) => {
-			console.log("data: ", response.data);
 			this.setState({
 				list: response.data.properties,
 				filtredList: response.data.properties,
