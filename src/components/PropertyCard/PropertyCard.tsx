@@ -26,6 +26,9 @@ export class PropertyCard extends Component<any> {
 								{this.props.item.overallRating?.overall / 10}
 							</span>
 						</div>
+						{this.props.item.isFeatured && (
+							<div className="featured">Featured</div>
+						)}
 					</div>
 					<div className="title-container">
 						<h1>{this.props.item.name}</h1>
