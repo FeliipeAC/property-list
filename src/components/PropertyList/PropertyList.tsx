@@ -6,12 +6,11 @@ import Stack from "@mui/material/Stack";
 import { PropertyCardSkeleton } from "../PropertyCardSkeleton/PropertyCardSkeleton";
 
 import { PropertyCard } from "../PropertyCard/PropertyCard";
-import { FilterBar } from "../FilterBar/FilterBar";
 export class PropertyList extends Component<
 	any,
 	{
 		list: any[];
-		filtredList: any[];
+		viewList: any[];
 		loading: boolean;
 		page: number;
 		perPage: number;
@@ -22,7 +21,7 @@ export class PropertyList extends Component<
 		super(props);
 		this.state = {
 			list: [],
-			filtredList: [],
+			viewList: [],
 			loading: true,
 			page: 1,
 			perPage: 24,
@@ -38,68 +37,16 @@ export class PropertyList extends Component<
 		// Simple GET request using axios
 		axios.get("data.json").then((response: any) => {
 			const properties = response.data.properties;
-			// console.log(response.data.properties);
+
 			this.setState({
 				list: properties,
 				totalPages: Math.ceil(properties.length / this.state.perPage),
 				loading: false,
 			});
 
-			if (this.state.list.length) {
-				this.sortList({
-					key: "price",
-					name: "Lowest price per night",
-				});
-			}
-
 			this.listByPage(1);
-			// console.log(this.state);
 		});
 	}
-
-	filter = (value: any) => {
-		if (value) {
-			let filtredList = this.state.list.filter((el) =>
-				el.name.toLowerCase().includes(value.toLowerCase())
-			);
-			this.setState({ filtredList: filtredList });
-		} else {
-			this.setState({ filtredList: this.state.list });
-		}
-	};
-
-	sortList = (value: { key: string; name: string }) => {
-		switch (value.key) {
-			case "rating":
-				this.setState({
-					list: this.state.list.sort(
-						(a, b) =>
-							b.overallRating?.overall - a.overallRating?.overall
-					),
-				});
-				break;
-			case "name":
-				this.setState({
-					list: this.state.list.sort((a, b) =>
-						a.name.localeCompare(b.name, "en", {
-							numeric: true,
-						})
-					),
-				});
-				break;
-			case "price":
-				this.setState({
-					list: this.state.list.sort(
-						(a, b) =>
-							a.lowestPricePerNight.value -
-							b.lowestPricePerNight.value
-					),
-				});
-				break;
-			default:
-				break;
-		}
-	};
 
 	handlePage = (event: object, page: number) => {
 		this.setState({
@@ -109,11 +56,13 @@ export class PropertyList extends Component<
 		this.listByPage(page);
 	};
 
+	// Display list filtered by page
 	listByPage(page: number) {
 		let listFilterPage = [];
 		if (page === 1) {
 			listFilterPage = this.state.list.slice(0, this.state.perPage);
 		} else {
+			// starting index to cut list
 			const startIndex =
 				this.state.perPage * page + 1 - this.state.perPage;
 
@@ -122,8 +71,9 @@ export class PropertyList extends Component<
 				startIndex + this.state.perPage
 			);
 		}
+
 		this.setState({
-			filtredList: listFilterPage,
+			viewList: listFilterPage,
 			page: page,
 		});
 	}
@@ -135,10 +85,6 @@ export class PropertyList extends Component<
 					padding: "48px 0",
 				}}
 			>
-				<FilterBar
-					onSearchChange={this.filter}
-					onSortChange={this.sortList}
-				/>
 				{this.state.loading ? (
 					<Grid
 						container
@@ -170,7 +116,7 @@ export class PropertyList extends Component<
 							justifyContent="flex-start"
 							alignItems="stretch"
 						>
-							{this.state.filtredList.map((item) => {
+							{this.state.viewList.map((item) => {
 								return (
 									<Grid
 										item
