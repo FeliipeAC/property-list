@@ -76,6 +76,8 @@ export class PropertyList extends Component<
 			viewList: listFilterPage,
 			page: page,
 		});
+
+		window.scrollTo(0, 0);
 	}
 
 	render() {
