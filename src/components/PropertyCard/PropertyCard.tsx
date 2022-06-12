@@ -20,12 +20,16 @@ export class PropertyCard extends Component<any> {
 							alt=""
 						/>
 						<div className="rating">
-							{/* <Star color="primary"></Star> */}
 							<span>
-								{" "}
-								{this.props.item.overallRating?.overall / 10}
+								{this.props.item.overallRating?.overall
+									? this.props.item.overallRating?.overall /
+									  10
+									: 0}
 							</span>
 						</div>
+						{this.props.item.isFeatured && (
+							<div className="featured">Featured</div>
+						)}
 					</div>
 					<div className="title-container">
 						<h1>{this.props.item.name}</h1>
